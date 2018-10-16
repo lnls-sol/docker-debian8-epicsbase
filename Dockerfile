@@ -12,7 +12,7 @@ WORKDIR /usr/local/epics
 RUN wget https://epics.anl.gov/download/base/base-3.15.5.tar.gz
 RUN tar -xzf base-3.15.5.tar.gz
 RUN rm -fv /usr/local/epics/base-3.15.5.tar.gz
-RUN wget https://svn.lnls.br/SOL/epics/config/epics.sh --no-check-certificate
+COPY epics.sh .
 RUN arch | xargs -i@ sed -i 's/linux-x86/linux-@/g' epics.sh
 RUN mv -v /usr/local/epics/epics.sh /etc/profile.d/
 RUN ln -s /usr/local/epics/base-3.15.5 base
